@@ -8,7 +8,7 @@ import * as ReactDOM from "react-dom";
 export let renderEntriesTree = (state)=>{
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)} store={store}/></BrowserRouter>, document.getElementById('root'));
+            <App state={state1} dispatch={store.dispatch.bind(store)} store={store}/></BrowserRouter>, document.getElementById('root'));
 }
 renderEntriesTree(store.getState());
 store.subscribe(()=>{
