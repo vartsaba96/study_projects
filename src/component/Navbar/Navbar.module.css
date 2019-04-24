@@ -1,0 +1,26 @@
+
+.navbar{
+    grid-area: navbar;
+    background-color: snow;
+    margin-left: 20px;
+  }
+  .item a{
+      color:darkblue;
+      text-decoration: none;
+  }
+.item a.activeLink {
+    background: #2da5da;
+    
+}
+.navFriends {
+    margin-top:50%;
+}
+.navFriends span{
+    display: inline-block;
+
+
+}
+.navFriends img {
+    width:50px;
+
+}

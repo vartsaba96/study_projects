@@ -1,0 +1,7 @@
+.discription_block{
+    padding:10px;
+}
+.Profile_info {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
