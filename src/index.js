@@ -4,14 +4,11 @@ import React from 'react';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import * as ReactDOM from "react-dom";
+import {Provider} from "react-redux";
 
-export let renderEntriesTree = (state)=>{
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state1} dispatch={store.dispatch.bind(store)} store={store}/></BrowserRouter>, document.getElementById('root'));
-}
-renderEntriesTree(store.getState());
-store.subscribe(()=>{
-    let state = store.getState();
-    renderEntriesTree(state);
-});
+            <Provider store={store}>
+            <App/>
+            </Provider>
+            </BrowserRouter>, document.getElementById('root'))
