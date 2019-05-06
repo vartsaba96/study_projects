@@ -3,12 +3,12 @@ import './App.css';
 import Navbar from './component/Navbar/Navbar';
 import Header from './component/Header/Header';
 import Profile from './component/Profile/Profile';
-import Dialogs from "./component/Dialogs/Dialogs";
 import Route from "react-router-dom/es/Route";
 import News from "./component/News/News";
 import Music from "./component/Music/Music";
 import Settings from "./component/Settings/Settings";
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
+import UsersContainer from "./component/Users/UsersContainer";
 
 const App = (props) => {
     return (
@@ -21,6 +21,7 @@ const App = (props) => {
                     />
                     } />
                     <Route path='/messages'render= {()=><DialogsContainer store={props.store} />} />
+                    <Route path='/users'render= {()=><UsersContainer />} />
                     <Route path='/news' render= { ()=><News />  } />
                     <Route path='/music' render= { ()=><Music />} />
                     <Route path='/settings' render= { ()=><Settings /> } />
