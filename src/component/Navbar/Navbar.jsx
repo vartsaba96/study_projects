@@ -21,6 +21,9 @@ class Navbar extends React.Component {
                 <div className={s.item}>
                     <NavLink activeClassName={s.activeLink} to="/settings">Settings</NavLink>
                 </div>
+                <div className={s.item}>
+                    <NavLink activeClassName={s.activeLink} to="/users">Users</NavLink>
+                </div>
                 <div className={s.navFriends}>
                 <h3>Friends</h3>
                     <span>
