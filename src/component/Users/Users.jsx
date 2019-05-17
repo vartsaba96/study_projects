@@ -7,12 +7,10 @@ import userPhoto from '../../assets/images/ava.jpg';
 
 class Users extends React.Component {
 
-constructor(props){
-    super(props);
-   
-            Axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-                this.props.setUsers(response.data.items);
-       });
+   componentDidMount(){
+    Axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        this.props.setUsers(response.data.items);
+});
    }
     render (){
         return <div>
