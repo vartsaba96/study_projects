@@ -9,12 +9,11 @@ import Music from "./component/Music/Music";
 import Settings from "./component/Settings/Settings";
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
-
+import HeaderContainer from "./component/Header/HeaderContainer";
 const App = (props) => {
     return (
-
             <div className="app-wraper">
-                <Header className="header"/>
+                <HeaderContainer className="header"/>
                 <Navbar className="navbar"/>
                 <div className="app-wraper-content">
                     <Route path='/profile/:userId?' 
