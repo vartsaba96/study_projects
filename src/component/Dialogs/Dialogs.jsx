@@ -2,10 +2,10 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
-
+import {Redirect} from 'react-router-dom';
 
 const Dialogs = (props) => {
-    debugger;
+
     let state = props.dialogsPage;
     let messagesComponent = state.messages.map(me => <Message message={me.message}/>);
     let dialogsComponent = state.dialogs.map(di => <DialogItem name={di.name} id={di.id}/>);
@@ -16,6 +16,11 @@ const Dialogs = (props) => {
     let onMessageChange = (e) => {
         let body = e.target.value;
         props.updateNewMessageBody(body);
+    }
+
+   
+    if (!props.isAuth){
+        return <Redirect to={"/login"} />
     }
     return (
         <div className={s.Dialogs}>

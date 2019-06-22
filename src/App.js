@@ -10,6 +10,9 @@ import Settings from "./component/Settings/Settings";
 import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
+import Login from "./component/Login/Login";
+
+
 const App = (props) => {
     return (
             <div className="app-wraper">
@@ -28,6 +31,8 @@ const App = (props) => {
                         render= { ()=><Music />} />
                     <Route path='/settings' 
                     render= { ()=><Settings /> } />
+                     <Route path='/login' 
+                    render= { ()=><Login /> } />
                 </div>
                 </div>
 
