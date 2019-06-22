@@ -3,6 +3,9 @@ import styles from './users.module.css';
 import userPhoto from '../../assets/images/ava.jpg';
 import { NavLink } from "react-router-dom";
 import * as Axios from 'axios';
+import { usersAPI } from '../../api/api';
+
+
 let Users = (props) => {
 
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -26,39 +29,13 @@ let Users = (props) => {
                 </div>
                 <div>
                     {u.folowwed ?
-                        <button disabled={props.followwingInProgress.some(id=>id===u.id)} onClick={() => { 
-                            props.toggleFollowingProgress(true, u.id);
-                            Axios.delete(`https://social-network.samuraijs.com/api/1.0/unfollow/${u.id}`,{
-                                withCredentials: true,
-                                headers: {
-                                    "api-key":"12617c6a-70a4-4dea-8437-dd1cdd9881f3"
-                                }
-                            })
-                            .then(response => {
-                                if (response.data.resultCode === 0){
-                                    props.unfolow(u.id)
-                                }
-                                props.toggleFollowingProgress(false, u.id);
-                            });
-                             }
-                        
+                        <button disabled={props.followwingInProgress
+                            .some(id=>id===u.id)} onClick={() => {props.unfollow(u.id);}
                         }>Unfollow</button>
-                        : <button disabled={props.followwingInProgress.some(id=>id===u.id)} onClick={() => { 
-                            props.toggleFollowingProgress(true, u.id);
-                            Axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},{
-                                withCredentials: true,
-                                headers: {
-                                    "api-key" : "12617c6a-70a4-4dea-8437-dd1cdd9881f3"
-                                }
-                            })
-                            .then(response => {
-                                props.toggleFollowingProgress(true, u.id);
-                                if (response.data.resultCode === 0){
-                                    props.folow(u.id);
-                                }
-                                props.toggleFollowingProgress(false, u.id);
-                            });
-                        }}>Follow</button>}
+                        : <button disabled={props.followwingInProgress
+                            .some(id=>id===u.id)} onClick={() => { 
+                            props.follow(u.id);}
+                            }>Follow</button>}
                 </div>
             </span>
             <span>
