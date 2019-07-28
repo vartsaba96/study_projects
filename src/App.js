@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Navbar from './component/Navbar/Navbar';
-import Header from './component/Header/Header';
 import ProfileContainer from './component/Profile/ProfileContainer';
 import Route from "react-router-dom/es/Route";
 import News from "./component/News/News";
