@@ -10,9 +10,20 @@ import DialogsContainer from "./component/Dialogs/DialogsContainer";
 import UsersContainer from "./component/Users/UsersContainer";
 import HeaderContainer from "./component/Header/HeaderContainer";
 import Login from "./component/Login/Login";
+import {initializeApp} from './state/appReduser';
+import {connect} from "react-redux";
+import { compose } from 'redux';
+import { withRouter } from "react-router";
+import Preloader from './component/common/preloader/Preloader';
 
-
-const App = (props) => {
+class App extends React.Component {
+    componentDidMount(){
+        this.props.initializeApp();
+    }
+    render(){
+        if(!this.props.initialized){
+        return <Preloader />
+        } else{
     return (
             <div className="app-wraper">
                 <HeaderContainer className="header"/>
@@ -37,4 +48,11 @@ const App = (props) => {
 
     );
 }
-export default App;
+}
+}
+const mapStateToProps = (state)=> ({
+    initialized: state.app.initialized,
+});
+export default compose(
+    withRouter,
+    connect(mapStateToProps, {initializeApp}))(App);
