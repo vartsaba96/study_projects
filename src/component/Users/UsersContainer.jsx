@@ -1,20 +1,21 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleIsFetching,toggleFollowingProgress, getUsers} from "../../state/usersPageReducer";
+import {follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleIsFetching,toggleFollowingProgress, requestUsers} from "../../state/usersPageReducer";
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { getPageSize, getUsers, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowwingInProgress  } from '../../state/usersSelectors';
 
 class UsersContainer extends React.Component {
 
     componentDidMount(){
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize);
 
     }
     onPageChanged = (pageNumber)=>{
 
-        this.props.getUsers(pageNumber, this.props.pageSize);
+        this.props.requestUsers(pageNumber, this.props.pageSize);
         
     }
      render (){
@@ -33,7 +34,8 @@ class UsersContainer extends React.Component {
      }
  }
 
-let mapStateToProps = (state) => {
+
+/*let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
         pageSize: state.usersPage.pageSize,
@@ -43,12 +45,23 @@ let mapStateToProps = (state) => {
         followwingInProgress: state.usersPage.followwingInProgress,
     }
 }
+*/
+let mapStateToProps = (state) => {
+    return {
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followwingInProgress: getFollowwingInProgress(state),
+    }
+}
 
 
     export default compose(
         //withAuthRedirect,
         connect(mapStateToProps,
             {follow,unfollow, setCurrentPage,
-            toggleFollowingProgress, getUsers
+            toggleFollowingProgress, requestUsers
             }),
     )(UsersContainer);
