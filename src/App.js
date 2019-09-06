@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Navbar from './component/Navbar/Navbar';
 import ProfileContainer from './component/Profile/ProfileContainer';
-import Route from "react-router-dom/es/Route";
+import {Route, withRouter} from 'react-router-dom';
 import News from "./component/News/News";
 import Music from "./component/Music/Music";
 import Settings from "./component/Settings/Settings";
@@ -13,8 +13,11 @@ import Login from "./component/Login/Login";
 import {initializeApp} from './state/appReduser';
 import {connect} from "react-redux";
 import { compose } from 'redux';
-import { withRouter } from "react-router";
 import Preloader from './component/common/preloader/Preloader';
+import {BrowserRouter} from "react-router-dom";
+import store from './state/redux-store';
+import {Provider} from "react-redux";
+
 
 class App extends React.Component {
     componentDidMount(){
@@ -53,6 +56,16 @@ class App extends React.Component {
 const mapStateToProps = (state)=> ({
     initialized: state.app.initialized,
 });
-export default compose(
+let AppContainer=  compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
+
+ const MainApp = (props) =>{
+        return  <BrowserRouter>
+        <Provider store={store}>
+        <AppContainer />
+        </Provider>
+        </BrowserRouter>
+    }
+
+export default MainApp;
