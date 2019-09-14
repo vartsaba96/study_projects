@@ -16,6 +16,7 @@ import {BrowserRouter} from "react-router-dom";
 import store from './state/redux-store';
 import {Provider} from "react-redux";
 import {withSuspense} from "./hoc/withSuspense";
+import { HashRouter } from 'react-router-dom/cjs/react-router-dom';
 const DialogsContainer = React.lazy(() => import('./component/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./component/Profile/ProfileContainer'));
 
@@ -62,11 +63,11 @@ let AppContainer=  compose(
     connect(mapStateToProps, {initializeApp}))(App);
 
  const MainApp = (props) =>{
-        return  <BrowserRouter>
+        return  <HashRouter>
         <Provider store={store}>
         <AppContainer />
         </Provider>
-        </BrowserRouter>
+        </HashRouter >
     }
 
 export default MainApp;
