@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://vartsaba96.github.io/study_projects/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "cn-decorator": "^2.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
